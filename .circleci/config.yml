@@ -1,4 +1,5 @@
 version: 2.1
+
 jobs:
   run_test:
     docker:
@@ -7,12 +8,12 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-            command: | 
-                echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-                pip install --user -r requirements.txt
+          command: |
+              echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
+              pip install --user -r requirements.txt
       - run: 
           name: Run unit tests
-            command: | 
+          command: |
               pytest test.py
 workflows:
   build_tests:
